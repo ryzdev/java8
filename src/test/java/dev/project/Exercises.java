@@ -51,14 +51,19 @@ public class Exercises {
      * Create a string that consists of the first letters of each
      * word in the input list.
      */
-    @Test @Ignore
+    @Test
     public void ex01_accumulateFirstLetters() {
         List<String> input = Arrays.asList(
             "alfa", "bravo", "charlie", "delta", "echo", "foxtrot");
-        
-        String result = ""; // TODO
+
+        StringBuilder stringBuilder = new StringBuilder();
+        input.forEach(s -> stringBuilder.append(s.charAt(0)));
+
+        String result = stringBuilder.toString();
         
         assertEquals("abcdef", result);
+
+        /* itemArray.forEach(item -> otherArray.add(item)) */
     }
     // Hint:
     // <editor-fold defaultstate="collapsed">
@@ -69,14 +74,16 @@ public class Exercises {
     /**
      * Remove the words that have odd lengths from the list.
      */
-    @Test @Ignore
+    @Test
     public void ex02_removeOddLengthWords() {
         List<String> list = new ArrayList<>(Arrays.asList(
             "alfa", "bravo", "charlie", "delta", "echo", "foxtrot"));
-        
-        // TODO code to modify list
-        
+
+        list.removeIf(s -> s.length() % 2 != 0);
+
         assertEquals("[alfa, echo]", list.toString());
+
+        /* list.removeIf(s -> s.equals("thingToRemove")) */
     }
     // Hint:
     // <editor-fold defaultstate="collapsed">
@@ -87,14 +94,17 @@ public class Exercises {
     /**
      * Replace every word in the list with its upper case equivalent.
      */
-    @Test @Ignore
+    @Test
     public void ex03_upcaseAllWords() {
         List<String> list = new ArrayList<>(Arrays.asList(
             "alfa", "bravo", "charlie", "delta", "echo", "foxtrot"));
-        
-        //TODO code to modify list
-        
+
+        list.replaceAll(String::toUpperCase);
+
         assertEquals("[ALFA, BRAVO, CHARLIE, DELTA, ECHO, FOXTROT]", list.toString());
+
+        /* list.replaceAll(s -> s.toUpperCase());
+         * list.replaceAll(String::toUpperCase); */
     }
     // Hint:
     // <editor-fold defaultstate="collapsed">
@@ -106,14 +116,17 @@ public class Exercises {
      * Convert every key-value pair of a map into a string and append them all
      * into a single string, in iteration order.
      */
-    @Test @Ignore
+    @Test
     public void ex04_stringifyMap() {
         Map<String, Integer> input = new TreeMap<>();
         input.put("c", 3);
         input.put("b", 2);
         input.put("a", 1);
-        
-        String result = ""; // TODO
+
+        StringBuilder sb = new StringBuilder();
+        input.forEach((k,v) -> sb.append(k).append(v.toString()));
+
+        String result = sb.toString();
         
         assertEquals("a1b2c3", result);
     }
@@ -144,12 +157,12 @@ public class Exercises {
     // Use Map.merge() within Iterable.forEach().
     // </editor-fold>
 
-    
+
 // ========================================================
 // SIMPLE STREAM PIPELINES
 // ========================================================
 
-    
+
     /**
      * Given a list of words, create an output list that contains
      * only the odd-length words, converted to upper case.
