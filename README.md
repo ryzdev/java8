@@ -5,8 +5,7 @@ Java 8 Lambdas Hands-on Lab Materials
 
 (version 2 for late 2014 conferences)
 
-Open LambdaLab in your favorite IDE. (Currently NetBeans is
-supported.) Then open Test Packages / exercises / Exercises.java.
+Build LambdaLab with Maven. Then open Exercises.java.
 
 The exercises are in the form of JUnit tests. Each exercise is a
 single test method. Each test method is initially marked with @Ignore
